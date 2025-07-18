@@ -1,0 +1,1 @@
+// JS principal está inline no HTML

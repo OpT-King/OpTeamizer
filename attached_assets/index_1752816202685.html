@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kideuss Optimizer</title>
+  <script defer src="main.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-16 h-screen bg-gray-800 flex flex-col items-center py-4 space-y-6">
+      <img src="https://img.icons8.com/ios-filled/50/rocket.png" class="w-6 h-6" />
+      <img src="https://img.icons8.com/ios-filled/50/home.png" class="w-6 h-6" />
+      <img src="https://img.icons8.com/ios-filled/50/speed.png" class="w-6 h-6" />
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 p-8 space-y-6">
+      <h1 class="text-3xl font-bold mb-4">Kideuss Optimizer</h1>
+
+      <p class="mb-6 text-gray-300">I've built a safe educational Windows PC optimization tool with the following features:<br>
+      ✓ Dashboard with real-time system metrics (CPU, memory, network, optimization score)<br>
+      ✓ System information page with detailed hardware specs<br>
+      ✓ Optimizations page with categorized scripts (gaming, network, system, safety)<br>
+      ✓ Performance tracking with before/after comparisons<br>
+      ✓ Educational guides for learning optimization techniques</p>
+
+      <!-- Segurança -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🛡️ Segurança</h2>
+        <div class="space-x-2 mb-2">
+          <button onclick="runScript('create_restore_point')" class="bg-yellow-500 text-black px-4 py-2 rounded">Criar Ponto de Restauração</button>
+          <button onclick="runScript('launch_restore')" class="bg-red-600 px-4 py-2 rounded">Restaurar Sistema</button>
+        </div>
+        <button onclick="applyAll(['create_restore_point', 'launch_restore'])" class="bg-green-600 px-4 py-2 rounded">Aplicar Tudo - Segurança</button>
+      </div>
+
+      <!-- Boost FPS -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🎮 Boost de FPS</h2>
+        <div class="space-x-2 mb-2">
+          <button onclick="runScript('boost_fps')" class="bg-indigo-600 px-4 py-2 rounded">Aplicar Boost FPS</button>
+          <button onclick="runScript('memory_boost')" class="bg-indigo-600 px-4 py-2 rounded">Melhorar Memória</button>
+          <button onclick="runScript('disable_throttling')" class="bg-indigo-600 px-4 py-2 rounded">Desativar Power Throttling</button>
+          <button onclick="runScript('optimize_memory')" class="bg-indigo-600 px-4 py-2 rounded">Otimizar Gerenciamento</button>
+          <button onclick="runScript('ram_16gb')" class="bg-indigo-600 px-4 py-2 rounded">Ajustar para 16GB RAM</button>
+        </div>
+        <button onclick="applyAll(['boost_fps', 'memory_boost', 'disable_throttling', 'optimize_memory', 'ram_16gb'])" class="bg-green-600 px-4 py-2 rounded">Aplicar Tudo - FPS</button>
+      </div>
+
+      <!-- Serviços -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🚫 Desativar Serviços</h2>
+        <div class="space-x-2 mb-2">
+          <button onclick="runScript('disable_services')" class="bg-pink-600 px-4 py-2 rounded">Desativar Serviços</button>
+          <button onclick="runScript('disable_extra_services')" class="bg-pink-600 px-4 py-2 rounded">Desativar Serviços Extras</button>
+        </div>
+        <button onclick="applyAll(['disable_services', 'disable_extra_services'])" class="bg-green-600 px-4 py-2 rounded">Aplicar Tudo - Serviços</button>
+      </div>
+
+      <!-- Rede -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🌐 Otimização de Rede</h2>
+        <div class="space-x-2 mb-2">
+          <button onclick="runScript('network_limit')" class="bg-blue-600 px-4 py-2 rounded">Remover Limitação</button>
+          <button onclick="runScript('disable_background_apps')" class="bg-blue-600 px-4 py-2 rounded">Fechar Apps em Segundo Plano</button>
+          <button onclick="runScript('reduce_network_delay')" class="bg-blue-600 px-4 py-2 rounded">Reduzir Delay</button>
+          <button onclick="runScript('latency_tolerance')" class="bg-blue-600 px-4 py-2 rounded">Tolerância de Latência</button>
+        </div>
+        <button onclick="applyAll(['network_limit', 'disable_background_apps', 'reduce_network_delay', 'latency_tolerance'])" class="bg-green-600 px-4 py-2 rounded">Aplicar Tudo - Rede</button>
+      </div>
+
+      <!-- Extras -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🧪 Ferramentas</h2>
+        <div class="space-x-2 mb-2">
+          <button onclick="runScript('measure_sleep')" class="bg-gray-500 px-4 py-2 rounded">Medir Sleep Timer</button>
+          <button onclick="runScript('install_process_lasso')" class="bg-gray-500 px-4 py-2 rounded">Instalar Process Lasso</button>
+        </div>
+        <button onclick="applyAll(['measure_sleep', 'install_process_lasso'])" class="bg-green-600 px-4 py-2 rounded">Aplicar Tudo - Ferramentas</button>
+      </div>
+    </main>
+  </div>
+  <script>
+    function runScript(scriptName) {
+      fetch(`/run/${scriptName}`)
+        .then(response => response.text())
+        .then(msg => alert(msg))
+        .catch(err => alert('Erro ao executar: ' + err));
+    }
+
+    function applyAll(scripts) {
+      scripts.forEach(script => runScript(script));
+    }
+  </script>
+</body>
+</html>
